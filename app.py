@@ -5,7 +5,8 @@ import mysql.connector
 """
 House Property Sales Analysis
 
-Dataset: The House Property Sales dataset on Kaggle contains a file named ‘raw_sales.csv.’ It includes the following variables:
+Dataset: The House Property Sales dataset on Kaggle contains a file
+named ‘raw_sales.csv.’ It includes the following variables:
 
 Datesold: The date when an owner sold the house to a buyer.
 Postcode: 4 digit postcode of the suburb where the owner sold the property
@@ -74,7 +75,8 @@ def get_the_most_profitable_day():
     # get the most profitable day
     mycursor.execute(
         """
-        SELECT datesold as the_most_profitable_date, SUM(price) AS profit FROM sales GROUP BY datesold ORDER BY profit DESC LIMIT 1;
+        SELECT datesold as the_most_profitable_date, SUM(price) AS profit 
+        FROM sales GROUP BY datesold ORDER BY profit DESC LIMIT 1;
         """
     )
 
@@ -93,7 +95,8 @@ def get_the_most_sales_day():
     # get the day with most sales amount 
     mycursor.execute(
         """
-        SELECT datesold, COUNT(datesold) AS sales_count FROM sales GROUP BY datesold ORDER BY sales_count DESC LIMIT 1;
+        SELECT datesold, COUNT(datesold) AS sales_count FROM sales 
+        GROUP BY datesold ORDER BY sales_count DESC LIMIT 1;
         """
     )
     # fetche all rows from the last executed statement.
@@ -110,7 +113,8 @@ def get_the_postcode_with_the_highest_average_price_per_sale():
     # get the day with most sales amount 
     mycursor.execute(
         """
-        SELECT postcode, AVG(price) AS highest_avg_price FROM sales GROUP BY postcode ORDER BY highest_avg_price DESC LIMIT 1;
+        SELECT postcode, AVG(price) AS highest_avg_price FROM sales 
+        GROUP BY postcode ORDER BY highest_avg_price DESC LIMIT 1;
         """
     )
     # fetche all rows from the last executed statement.
@@ -127,7 +131,8 @@ def get_the_lowest_number_of_sales_per_year():
     # get the year with lowest number of sales 
     mycursor.execute(
         """
-        SELECT YEAR(datesold) lowest_sales_year, COUNT(datesold) AS sales_count FROM sales GROUP BY YEAR(datesold) ORDER BY sales_count ASC LIMIT 1;
+        SELECT YEAR(datesold) lowest_sales_year, COUNT(datesold) AS sales_count 
+        FROM sales GROUP BY YEAR(datesold) ORDER BY sales_count ASC LIMIT 1;
         """
     )
     # fetche all rows from the last executed statement.
